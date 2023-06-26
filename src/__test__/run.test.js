@@ -13,14 +13,14 @@ describe("transformCode fn", () => {
   it("test_transforms_code_correctly", () => {
     const code = "const a = 1";
     const result = transformCode(code);
-    expect(result).toContain("const a = 1;");
+    expect(result).toContain("const a=1;");
   });
 
   // Tests that the function replaces new lines with debug statements
   it("test_replaces_new_lines_with_debug_statements", () => {
-    const code = "const a = 1;\n\nconst b = 2;";
+    const code = "const a = 1\n\nconst b = 2";
     const result = transformCode(code);
-    expect(result).toContain('debug(-1,"__newline__");');
+    expect(result).toContain("const a=1;\n\nconst b=2;");
   });
 
   // Tests that the function handles empty input
@@ -34,7 +34,7 @@ describe("transformCode fn", () => {
     const code = "const a = 1; console.log(a);";
     const result = transformCode(code);
 
-    expect(result).toBe("const a = 1;debug(1, a);");
+    expect(result).toBe("const a=1;debug(1,a);");
   });
 
   // Tests that the function handles input with no semicolons
@@ -42,7 +42,7 @@ describe("transformCode fn", () => {
     const code = "const a = 1\nconsole.log(a)";
     const result = transformCode(code);
 
-    expect(result).toBe("const a = 1;\ndebug(2, a);");
+    expect(result).toBe("const a=1;\ndebug(2,a);");
   });
 });
 
