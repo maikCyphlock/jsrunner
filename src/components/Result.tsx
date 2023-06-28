@@ -4,6 +4,16 @@ import { CodeResultContext } from "../context/CodeContext";
 function Result() {
     const { result: elements } = useContext(CodeResultContext)
 
+    function detectOverlappingAbsolute() {
+        const absoluteElements = document.querySelectorAll('.absolute');
+        absoluteElements.forEach(elem => {
+            const elemRect = elem.getBoundingClientRect();
+            const overlapping = document.elementsFromPoint(elemRect.left, elemRect.top).length > 1;
+            if (overlapping) {
+                elem.style.position = 'relative';
+            }
+        })
+    }
 
     function render(element) {
         return element.map((result, key) => {
@@ -18,16 +28,18 @@ function Result() {
                     className="flex gap-3  h-[26px] absolute">
 
                     {
-                        <span>
-                            ({result.element?.lineNumber ?? result.lineNumber})
-                        </span>
-                    }
-                    {
 
                         Array.isArray(result.element?.content ?? false) ? render(result.element.content) : (
                             result.element?.content ?? result?.content
+
+
                         )
                     }
+                    {
+                        detectOverlappingAbsolute()
+                    }
+
+
                 </pre>
             )
         })
@@ -39,6 +51,7 @@ function Result() {
             {
                 elements && render(elements)
             }
+
         </div >
     );
 }
