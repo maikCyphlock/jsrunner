@@ -1,4 +1,5 @@
 import jc from 'json-cycle';
+import { promises } from 'original-fs';
 import ObjetToString from 'stringify-object';
 
 export enum Colors {
@@ -56,6 +57,27 @@ export async function stringify(element: any) {
 
   }
   if (Array.isArray(element)) {
+    return { content: ObjetToString(jc.decycle(element)) }
+
+    //TODO: FIX THE BELOW CODE,IT IS MORE CUSTOMIZABLE BUT I GET SOME PROBLEMS
+    const resultArray = await Promise.all(
+      element
+        .map((it, index) => {
+          if (index + 1 == element.length) return stringify(it);
+
+          return [
+            stringify(it),
+            {
+              content: ', ',
+              color: Colors.GRAY
+            }
+          ];
+        }).flat()
+
+    ).then(it => it)
+
+
+
     return {
       content: [
         {
@@ -74,24 +96,12 @@ export async function stringify(element: any) {
           content: '[',
           color: Colors.GRAY
         },
-        ...element
-          .map((it, index) => {
-            if (index + 1 == element.length) return stringify(it);
-
-            return [
-              stringify(it),
-              {
-                content: ', ',
-                color: Colors.GRAY
-              }
-            ];
-          })
-          .flat(),
+        resultArray,
         {
           content: ']',
           color: Colors.GRAY
         }
-      ]
+      ].flat()
     };
   }
 
