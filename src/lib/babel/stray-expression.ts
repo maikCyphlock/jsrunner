@@ -39,10 +39,12 @@ export default function ({ types: t }: any): { visitor: TraverseOptions<Node> } 
 		visitor: {
 
 			BinaryExpression(path) {
+				if (path.parentPath.type == 'VariableDeclarator') return
 				expression(path);
 				visit(path);
 			},
 			UnaryExpression(path) {
+				if (path.parentPath.type == 'VariableDeclarator') return
 				expression(path);
 				visit(path);
 			},
@@ -52,14 +54,17 @@ export default function ({ types: t }: any): { visitor: TraverseOptions<Node> } 
 				visit(path);
 			},
 			AwaitExpression(path) {
+				if (path.parentPath.type == 'VariableDeclarator') return
 				expression(path);
 				visit(path);
 			},
 			NewExpression(path) {
+				if (path.parentPath.type == 'VariableDeclarator') return
 				expression(path);
 				visit(path);
 			},
 			DirectiveLiteral(path) {
+				if (path.parentPath.type == 'VariableDeclarator') return
 				if (!path.node?.value) return;
 				if (!path.node.loc?.start?.line) return;
 				path.parentPath.replaceWith(
@@ -70,16 +75,18 @@ export default function ({ types: t }: any): { visitor: TraverseOptions<Node> } 
 				);
 			},
 			Identifier(path) {
-				if (path.parentPath.type === 'VariableDeclarator') return
+				if (path.parentPath.type == 'VariableDeclarator') return
 
 				expression(path);
 				visit(path);
 			},
 			ArrayExpression(path) {
+				if (path.parentPath.type == 'VariableDeclarator') return
 				expression(path);
 				visit(path);
 			},
 			MemberExpression(path) {
+				if (path.parentPath.type == 'VariableDeclarator') return
 				expression(path);
 				visit(path);
 			},
