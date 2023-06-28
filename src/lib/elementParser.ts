@@ -1,5 +1,4 @@
 import jc from 'json-cycle';
-import { promises } from 'original-fs';
 import ObjetToString from 'stringify-object';
 
 export enum Colors {
@@ -107,10 +106,10 @@ export async function stringify(element: any) {
 
   if (isPromise(element)) {
     const waited = await element;
-    const xd = Object.getPrototypeOf(element).toString().includes('Promise');
-    const sd = Object.getPrototypeOf(waited).toString().includes('Response')
+    const IsPromise = Object.getPrototypeOf(element).toString().includes('Promise');
+    const IsResponse = Object.getPrototypeOf(waited).toString().includes('Response')
     return {
-      content: xd && sd ? 'Promise { <pending> }' : ObjetToString(waited),
+      content: IsPromise && IsResponse ? 'Promise { <pending> }' : ObjetToString(waited),
       color: Colors.STRING
     };
   }
