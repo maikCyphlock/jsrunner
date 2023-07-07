@@ -85,8 +85,11 @@ function useLoading() {
 const { appendLoading, removeLoading } = useLoading()
 domReady().then(appendLoading)
 
-window.onmessage = ev => {
-  ev.data.payload === 'removeLoading' && removeLoading()
-}
+const { contextBridge, ipcRenderer } = require('electron')
 
+contextBridge.exposeInMainWorld('electronAPI', {
+  closeApp: () => ipcRenderer.send('close-me'),
+  maximizeApp: () => ipcRenderer.send('maximize'),
+  unmaximizeApp: () => ipcRenderer.send('unmaximize')
+})
 setTimeout(removeLoading, 4999)
