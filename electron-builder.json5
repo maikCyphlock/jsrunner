@@ -23,7 +23,7 @@
     artifactName: "${productName}_${version}.${ext}",
   },
   linux: {
-    target: "AppImage",
+    target: "deb",
     artifactName: "${productName}-${version}-${os}-${arch}.${ext}",
 
     category: "Development",
