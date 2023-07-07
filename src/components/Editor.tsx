@@ -1,12 +1,11 @@
 import { useRef, useContext, useEffect } from 'react';
 import Editor, { useMonaco } from '@monaco-editor/react';
 import { CodeContext, CodeResultContext } from '../context/CodeContext';
-
+import { useWindowSize } from '../hooks/useWindowSize'
 import { useDebouncedFunction } from '../hooks/useDebouce';
 import { run, transformCode, transformCodeAsync } from '../lib/code/run';
 
 function EDITOR() {
-
     const { code, setCode } = useContext(CodeContext);
     const { setResult } = useContext(CodeResultContext)
     const monacoRef = useRef(null);
@@ -50,30 +49,31 @@ function EDITOR() {
         debouncedRunner(e)
     }
     return (
-        <Editor
-            height="100%"
-            width="100%"
-            defaultLanguage="typescript"
-            theme='vs-dark'
-            options={
-                {
-                    dragAndDrop: true,
-                    minimap: {
-                        enabled: false
-                    },
-                    overviewRulerLanes: 0,
-                    scrollbar: {
-                        vertical: 'hidden'
-                    }, fontSize: 19,
-                    wordWrap: 'on',
+        <div>
+            <Editor
 
+                defaultLanguage="typescript"
+                theme='vs-dark'
+                options={
+                    {
+                        dragAndDrop: true,
+                        minimap: {
+                            enabled: false
+                        },
+                        overviewRulerLanes: 0,
+                        scrollbar: {
+                            vertical: 'hidden'
+                        }, fontSize: 19,
+                        wordWrap: 'on',
+
+                    }
                 }
-            }
-            onChange={handler}
-            defaultValue={code}
-            beforeMount={handleEditorWillMount}
-            onMount={handleEditorDidMount}
-        />
+                onChange={handler}
+                defaultValue={code}
+                beforeMount={handleEditorWillMount}
+                onMount={handleEditorDidMount}
+            />
+        </div>
     );
 }
 
