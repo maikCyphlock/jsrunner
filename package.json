@@ -1,7 +1,7 @@
 {
   "name": "jsrunner",
   "private": true,
-  "version": "1.0.0",
+  "version": "0.0.0",
   "author": "Maikol Douglas Aguilar Falcón <maikolaguilar656@gmail.com>",
   "license": "MIT",
   "scripts": {
