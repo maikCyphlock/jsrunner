@@ -11,7 +11,7 @@
   files: ["dist-electron", "dist"],
   mac: {
     artifactName: "${productName}_${version}.${ext}",
-    target: ["dmg"],
+    target: ["dmg", "pkg"],
   },
   win: {
     target: [
@@ -23,7 +23,7 @@
     artifactName: "${productName}_${version}.${ext}",
   },
   linux: {
-    target: "AppImage",
+    target: ["AppImage", "deb"],
     artifactName: "${productName}-${version}-${os}-${arch}.${ext}",
 
     category: "Development",
