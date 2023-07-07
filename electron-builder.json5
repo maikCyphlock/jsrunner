@@ -28,11 +28,11 @@
 
     category: "Development",
   },
-  publish: {
-    provider: "github",
-    repo: "https://github.com/maikCyphlock/jsrunner",
-    owner: "maikCyphlock",
-    releaseType: "release",
-    token: "<PERSONAL_ACCESS_TOKEN_REFERENCE>",
-  },
+  // publish: {
+  //   provider: "github",
+  //   repo: "https://github.com/maikCyphlock/jsrunner",
+  //   owner: "maikCyphlock",
+  //   releaseType: "release",
+  //   token: "<PERSONAL_ACCESS_TOKEN_REFERENCE>",
+  // },
 }
