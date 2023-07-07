@@ -28,4 +28,10 @@
     allowToChangeInstallationDirectory: true,
     deleteAppDataOnUninstall: false,
   },
+  publish: {
+    provider: "github",
+    repo: "https://github.com/maikCyphlock/jsrunner",
+    owner: "maikCyphlock",
+    releaseType: "release",
+  },
 }
