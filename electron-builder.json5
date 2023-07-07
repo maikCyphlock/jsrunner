@@ -28,9 +28,4 @@
     allowToChangeInstallationDirectory: true,
     deleteAppDataOnUninstall: false,
   },
-  build: {
-    publish: {
-      provider: "github",
-    },
-  },
 }
