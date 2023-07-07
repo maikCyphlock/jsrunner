@@ -35,4 +35,15 @@
     "allowToChangeInstallationDirectory": true,
     "deleteAppDataOnUninstall": false
   }
+  "publish":{
+    "win": {
+      "publish": ["github"]
+    },
+    "mac": {
+      "publish": ["github"]
+    },
+    "linux": {
+      "publish": ["github"]
+    }
+  }
 }

@@ -12,7 +12,7 @@
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "test": "vitest",
-    "release": "electron-builder --publish always"
+    "publish": "electron-builder --publish always"
   },
   "dependencies": {
     "@babel/core": "^7.22.5",
