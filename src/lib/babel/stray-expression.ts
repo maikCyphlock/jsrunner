@@ -37,7 +37,10 @@ export default function ({ types: t }: any): { visitor: TraverseOptions<Node> } 
 
 	return {
 		visitor: {
-
+			ConditionalExpression(path) {
+				expression(path);
+				visit(path);
+			},
 			BinaryExpression(path) {
 				if (path.parentPath.type == 'VariableDeclarator') return
 				expression(path);
