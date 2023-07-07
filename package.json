@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && electron-builder  ",
+    "build": "vite build && electron-builder ",
+    "build:all": "vite build && electron-builder -mwl ",
     "build:mac": "vite build && electron-builder  --mac ",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
@@ -19,6 +20,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-object-view": "^0.3.4",
+    "react-split": "2.0.14",
     "stringify-object": "^5.0.0"
   },
   "devDependencies": {
