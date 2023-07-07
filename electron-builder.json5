@@ -33,5 +33,6 @@
     repo: "https://github.com/maikCyphlock/jsrunner",
     owner: "maikCyphlock",
     releaseType: "release",
+    token: "<PERSONAL_ACCESS_TOKEN_REFERENCE>",
   },
 }
