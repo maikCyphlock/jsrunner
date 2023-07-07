@@ -56,7 +56,13 @@ export async function stringify(element: any) {
 
   }
   if (Array.isArray(element)) {
-    return { content: ObjetToString(jc.decycle(element)) }
+    return {
+      content: ObjetToString(jc.decycle(element), {
+        indent: '  ',
+        singleQuotes: false,
+        inlineCharacterLimit: 20
+      })
+    }
 
     //TODO: FIX THE BELOW CODE,IT IS MORE CUSTOMIZABLE BUT I GET SOME PROBLEMS
     const resultArray = await Promise.all(
