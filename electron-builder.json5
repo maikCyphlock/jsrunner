@@ -22,11 +22,11 @@
     ],
     artifactName: "${productName}_${version}.${ext}",
   },
-  nsis: {
-    oneClick: false,
-    perMachine: false,
-    allowToChangeInstallationDirectory: true,
-    deleteAppDataOnUninstall: false,
+  linux: {
+    target: "AppImage",
+    artifactName: "${productName}-${version}-${os}-${arch}.${ext}",
+
+    category: "Development",
   },
   publish: {
     provider: "github",
