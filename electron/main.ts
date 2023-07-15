@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain } from 'electron'
+import { app, BrowserWindow, ipcMain, nativeImage } from 'electron'
 import path from 'node:path'
 
 process.env.DIST = path.join(__dirname, '../dist')
@@ -51,4 +51,13 @@ function createWindow() {
 app.on('window-all-closed', () => {
   win = null
 })
-app.whenReady().then(createWindow)
+app
+  .whenReady()
+  .then(() => {
+    if (process.platform === 'darwin') {
+      app.dock.setIcon(
+        nativeImage.createFromPath(path.join(process.env.PUBLIC, 'jsrunner.png'))
+      )
+    }
+  })
+  .then(createWindow)
