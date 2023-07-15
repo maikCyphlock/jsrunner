@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain, nativeImage } from 'electron'
+import { app, BrowserWindow, ipcMain, nativeImage, Menu } from 'electron'
 import path from 'node:path'
 
 process.env.DIST = path.join(__dirname, '../dist')
