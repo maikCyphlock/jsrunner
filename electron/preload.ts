@@ -90,6 +90,8 @@ const { contextBridge, ipcRenderer } = require('electron')
 contextBridge.exposeInMainWorld('electronAPI', {
   closeApp: () => ipcRenderer.send('close-me'),
   maximizeApp: () => ipcRenderer.send('maximize'),
-  unmaximizeApp: () => ipcRenderer.send('unmaximize')
+  unmaximizeApp: () => ipcRenderer.send('unmaximize'),
+  showContextMenu: () => ipcRenderer.send('show-context-menu')
 })
-setTimeout(removeLoading, 4999)
+
+setTimeout(removeLoading, 1000)
