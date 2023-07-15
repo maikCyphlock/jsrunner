@@ -20,24 +20,23 @@ registerPlugins({
 });
 
 export function transformCode(code: string): string {
-  // const RegexToDetectNewLines = /\\n/g;
-  // const RenderWhitespaces = ' debug(-1,"__newline__");';
   const result = transform(code, {
     filename: "index.ts",
     presets: ["typescript"],
+    sourceType: "module",
     parserOpts: {
       allowAwaitOutsideFunction: true,
     },
+    targets: {
+      esmodules: true,
+    },
     sourceMaps: true,
-    retainLines: true,
-    compact: true,
     plugins: ["log-transform", "stray-expression-babel"],
-  })
+  });
 
-  console.log(result)
+  console.log(result);
 
-  return result.code
-  // .replaceAll(RegexToDetectNewLines, RenderWhitespaces)
+  return result.code;
 }
 
 export async function run(string: string): Promise<Result[] | Error> {
@@ -53,18 +52,21 @@ export async function run(string: string): Promise<Result[] | Error> {
 
     if (unparsedResults.length === 0) return [];
 
-    const promises = unparsedResults.map(async result => {
+    const promises = unparsedResults.map(async (result) => {
       const stringifiedContent = await stringify(result.content);
-      if (!stringifiedContent) throw new Error('Unable to stringify content');
-      return { lineNumber: result.lineNumber, element: stringifiedContent, type: 'execution' };
+      if (!stringifiedContent) throw new Error("Unable to stringify content");
+      return {
+        lineNumber: result.lineNumber,
+        element: stringifiedContent,
+        type: "execution",
+      };
     });
     let parsedResults = await Promise.all(promises);
-    let results = Promise.race(promises).then(result => console.log(result))
-
 
     return parsedResults;
   } catch (e: unknown) {
-
-    return [{ element: { content: e.message, color: Colors.ERROR }, type: "error" }];
+    return [
+      { element: { content: e.message, color: Colors.ERROR }, type: "error" },
+    ];
   }
 }
