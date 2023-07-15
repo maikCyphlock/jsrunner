@@ -1,5 +1,9 @@
-# JSRunner
+# JSRunner 🏃
 JSRunner es un playground de JavaScript que utiliza Babel para transformar el código ingresado y muestra los resultados en la línea correspondiente del código.
+
+
+https://github.com/maikCyphlock/jsrunner/assets/66704744/05dd1366-5e88-4e4d-bd71-bd352f2b8332
+
 
 ## Cómo utilizar
 instala el Jsrunner
@@ -17,3 +21,8 @@ Visualización de resultados y mensajes de error en la línea correspondiente de
 
 ## Contribuir
 Si deseas contribuir a JSRunner, por favor envía un pull request con tus cambios propuestos. Agradecemos cualquier contribución que pueda mejorar la funcionalidad o la facilidad de uso de la herramienta.
+
+### pagina web de jsrunner
+tambien puedes contribuir al website de jsrunner, para mejorar algunos showcase o reparar errores
+
+🔗: https://github.com/maikCyphlock/jsrunner-website
