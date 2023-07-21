@@ -1,28 +1,31 @@
 # JSRunner 🏃
-JSRunner es un playground de JavaScript que utiliza Babel para transformar el código ingresado y muestra los resultados en la línea correspondiente del código.
+JSRunner is a JavaScript playground that uses Babel to transform the entered code and displays the results in the corresponding line of code.
 
 
 https://github.com/maikCyphlock/jsrunner/assets/66704744/05dd1366-5e88-4e4d-bd71-bd352f2b8332
 
 
-## Cómo utilizar
-instala el Jsrunner
+## How to use
+install the Jsrunner
 
-Ingresa el `código` de JavaScript que deseas ejecutar en el área de texto en la parte superior de la página.
+Enter the JavaScript `code` you wish to run in the text area at the top of the page.
 
-Los resultados y cualquier mensaje de error se mostrarán en la línea de código correspondiente en el área de texto a continuación.
+The results and any error messages will be displayed in the corresponding line of code in the text area below.
 
-los resultados se muestras a la par del editor del código 
-Nota: JSRunner utiliza  Babel para transformar el código.
+The results are displayed alongside the code editor. 
+Note: JSRunner uses Babel to transform the code.
 
-## Características
-Transformación de código utilizando Babel.
-Visualización de resultados y mensajes de error en la línea correspondiente del código.
+## Features
+Code transformation using Babel.
+Display of results and error messages in the corresponding line of code.
 
-## Contribuir
-Si deseas contribuir a JSRunner, por favor envía un pull request con tus cambios propuestos. Agradecemos cualquier contribución que pueda mejorar la funcionalidad o la facilidad de uso de la herramienta.
+## Contribute
+If you would like to contribute to JSRunner, please send a pull request with your proposed changes. We welcome any contributions that can improve the functionality or usability of the tool.
 
-### pagina web de jsrunner
-tambien puedes contribuir al website de jsrunner, para mejorar algunos showcase o reparar errores
+### jsrunner website
+you can also contribute to the jsrunner website, to improve some showcases or fix bugs.
 
 🔗: https://github.com/maikCyphlock/jsrunner-website
+
+## Project contributors
+[![Contributors](https://contrib.rocks/image?repo=maikCyphlock/jsrunner)](https://github.com/IAHispano/web/graphs/contributors)
