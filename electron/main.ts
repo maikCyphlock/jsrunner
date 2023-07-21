@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain, nativeImage } from 'electron'
+import { app, BrowserWindow, ipcMain, nativeImage, Menu } from 'electron'
 import path from 'node:path'
 
 process.env.DIST = path.join(__dirname, '../dist')
@@ -12,7 +12,7 @@ const VITE_DEV_SERVER_URL = process.env['VITE_DEV_SERVER_URL']
 
 function createWindow() {
   win = new BrowserWindow({
-    icon: path.join(process.env.PUBLIC, 'jsrunner.svg'),
+    icon: path.join(process.env.PUBLIC, 'jsrunner.png'),
     frame: false,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
@@ -34,6 +34,22 @@ function createWindow() {
 
     win?.unmaximize();
   });
+
+
+  // TODO: CONNECT THE MENU WITH NPM WORKSPACE
+
+  ipcMain.on('show-context-menu', (event) => {
+    const template = [
+      {
+        label: 'Working on npm workspace module',
+        click: () => { event.sender.send('context-menu-command', 'menu-item-1') }
+      },
+      { type: 'separator' },
+      { label: 'coming soon', type: 'checkbox', checked: false }
+    ]
+    const menu = Menu.buildFromTemplate(template)
+    menu.popup({ window: BrowserWindow.fromWebContents(event.sender) })
+  })
 
   // Test active push message to Renderer-process.
   win.webContents.on('did-finish-load', () => {

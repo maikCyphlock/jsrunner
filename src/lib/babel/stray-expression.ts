@@ -1,5 +1,50 @@
 import type { TraverseOptions, Node } from '@babel/traverse';
-
+//TODO: FIX BUG ON SHOWING MATH element thats return always {}
+const customMath = {
+	abs: () => { },
+	acos: () => { },
+	acosh: () => { },
+	asin: () => { },
+	asinh: () => { },
+	atan: () => { },
+	atanh: () => { },
+	atan2: () => { },
+	ceil: () => { },
+	cbrt: () => { },
+	expm1: () => { },
+	clz32: () => { },
+	cos: () => { },
+	cosh: () => { },
+	exp: () => { },
+	floor: () => { },
+	fround: () => { },
+	hypot: () => { },
+	imul: () => { },
+	log: () => { },
+	log1p: () => { },
+	log2: () => { },
+	log10: () => { },
+	max: () => { },
+	min: () => { },
+	pow: () => { },
+	random: () => { },
+	round: () => { },
+	sign: () => { },
+	sin: () => { },
+	sinh: () => { },
+	sqrt: () => { },
+	tan: () => { },
+	tanh: () => { },
+	trunc: () => { },
+	E: 2.718281828459045,
+	LN10: 2.302585092994046,
+	LN2: 0.6931471805599453,
+	LOG10E: 0.4342944819032518,
+	LOG2E: 1.4426950408889634,
+	PI: 3.141592653589793,
+	SQRT1_2: 0.7071067811865476,
+	SQRT2: 1.4142135623730951,
+}
 
 export default function ({ types: t }: any): { visitor: TraverseOptions<Node> } {
 
@@ -38,6 +83,12 @@ export default function ({ types: t }: any): { visitor: TraverseOptions<Node> } 
 	return {
 		visitor: {
 			ConditionalExpression(path) {
+				if (path.parentPath.type == 'ExpressionStatement') return
+				if (path.parentPath.type == 'VariableDeclarator') return
+				if (path.parentPath.type == 'AssignmentExpression') return
+				if (path.parentPath.type == 'BlockStatement') return
+				if (path.parentPath.type == 'FunctionExpression') return
+				if (path.parentPath.type == 'ArrowFunctionExpression') return
 				expression(path);
 				visit(path);
 			},
@@ -79,6 +130,10 @@ export default function ({ types: t }: any): { visitor: TraverseOptions<Node> } 
 			},
 			Identifier(path) {
 				if (path.parentPath.type == 'VariableDeclarator') return
+				if (path.node.name === 'Math') {
+
+
+				}
 
 				expression(path);
 				visit(path);
@@ -102,3 +157,4 @@ export default function ({ types: t }: any): { visitor: TraverseOptions<Node> } 
 		}
 	};
 }
+
