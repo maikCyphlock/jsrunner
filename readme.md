@@ -28,4 +28,4 @@ you can also contribute to the jsrunner website, to improve some showcases or fi
 🔗: https://github.com/maikCyphlock/jsrunner-website
 
 ## Project contributors
-[![Contributors](https://contrib.rocks/image?repo=maikCyphlock/jsrunner)](https://github.com/IAHispano/web/graphs/contributors)
+[![Contributors](https://contrib.rocks/image?repo=maikCyphlock/jsrunner)](https://github.com/maikCyphlock/jsrunner/graphs/contributors)
